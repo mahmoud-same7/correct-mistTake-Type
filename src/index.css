@@ -33,12 +33,12 @@ body {
 }
 
 .correct_btn {
-  background-color: #1976d2 !important;
+  background-color: #E45E3A!important;
   color: #fff !important;
 }
 
 .reset_btn {
-  color: #1976d2;
+  color: #E45E3A !important;
   background-color: #fff;
-  border: 1px solid #1976d2 !important;
+  border: 1px solid #E45E3A !important;
 }

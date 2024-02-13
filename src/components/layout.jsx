@@ -10,7 +10,7 @@ const LayOut = () => {
       layout.current.style.top = "-100%";
       layout.current.style.height = "0";
       layout.current.style.transition = "all .8s ease-in-out";
-    }, 5000);
+    }, 3000);
   });
 
   return (
