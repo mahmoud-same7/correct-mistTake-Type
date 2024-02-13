@@ -15,20 +15,25 @@ const Home = () => {
   const [text, setText] = useState("");
   const [correctData, setCorrectData] = useState("");
 
-  const correctFunc = async()=> {
-    setLoading(true)
+  const correctFunc = async () => {
+    setLoading(true);
     try {
-        const res = await fetch('localhost: 5000/correct',{
-            method:'POST',
-            body:JSON.stringify({textType:text})
-        })
-        const correctdata = res.json()
-        setCorrectData(correctdata)
-        setLoading(false)
+        const formData = new FormData();
+        formData.append('text', text);
+
+        const res = await fetch('http://localhost:5000/correct', {
+            method: 'POST',
+            body: formData
+        });
+
+        const correctdata = await res.json();
+        setCorrectData(correctdata);
+        setLoading(false);
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
+        throw error;
     }
-  }
+}
 
   return (
     <Box className="home">
@@ -89,7 +94,7 @@ const Home = () => {
                 </IconButton>
                 <textarea
                   className="textArea"
-                  name="textType"
+                  name="text"
                   rows="10"
                   value={correctData}
                   style={{ width: "90%", marginRight: "20px" }}
