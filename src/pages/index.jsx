@@ -93,7 +93,7 @@ const Home = () => {
             <textarea
               className="textArea"
               name="textType"
-              rows="10"
+              rows="15"
               placeholder="اكتب النص هنا"
               value={text}
               maxLength={255}
@@ -145,7 +145,7 @@ const Home = () => {
                 <textarea
                   className="textArea"
                   name="text"
-                  rows="10"
+                  rows="15"
                   value={correctData}
                   style={{ width: "90%", marginRight: "20px" }}
                 ></textarea>
