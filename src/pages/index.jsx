@@ -88,7 +88,7 @@ const Home = () => {
         >
           <Box
             className=" write"
-            sx={{ width: "98%", height: "100%", position: "relative" }}
+            sx={{ width: "98%", height: "100%", position: "relative",padding:'20px' }}
           >
             <textarea
               className="textArea"
@@ -104,7 +104,6 @@ const Home = () => {
                   setShow(true)
                 }else {
                   setShow(false)
-                  console.log('by')
                 }
               }}
             ></textarea>
@@ -115,8 +114,9 @@ const Home = () => {
                 color: "#E45E3A",
                 position: "absolute",
                 bottom: "40px",
-                left: "40px",
+                left: "60px",
                 fontWeight: "bold",
+
               }}
             >
               حرف {text.length}
@@ -147,7 +147,7 @@ const Home = () => {
                   name="text"
                   rows="15"
                   value={correctData}
-                  style={{ width: "90%", marginRight: "20px" }}
+                  style={{ width: "90%", marginRight: "20px", padding:'10px' }}
                 ></textarea>
               </Box>
             )}
