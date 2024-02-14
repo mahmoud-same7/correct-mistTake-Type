@@ -5,6 +5,7 @@ import {
   Container,
   IconButton,
   Stack,
+  Typography,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
@@ -14,30 +15,30 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [correctData, setCorrectData] = useState("");
+  const [show , setShow] = useState(false)
 
   const correctFunc = async () => {
     setLoading(true);
     try {
-        const formData = new FormData();
-        formData.append('text', text);
+      const formData = new FormData();
+      formData.append("text", text);
 
-        const res = await fetch('http://localhost:5000/correct', {
-            method: 'POST',
-            body: formData
-        });
+      const res = await fetch("http://localhost:5000/correct", {
+        method: "POST",
+        body: formData,
+      });
 
-        const correctdata = await res.json();
-        setCorrectData(correctdata);
-        setLoading(false);
+      const correctdata = await res.json();
+      setCorrectData(correctdata);
+      setLoading(false);
     } catch (error) {
-        console.error('Error:', error);
-        throw error;
+      console.error("Error:", error);
+      throw error;
     }
-}
-
+  };
   return (
     <Box className="home">
-        <LayOut/>
+      <LayOut />
       <Container maxWidth="lg">
         <Box
           className="img"
@@ -50,6 +51,32 @@ const Home = () => {
         >
           <img src={require("../assets/Capture.PNG")} width="100%" alt="logo" />
         </Box>
+        <Container maxWidth="lg">
+          <Typography
+            variant="div"
+            component="div"
+            sx={{ pt: "15px", pb: "15px", fontSize: "22px" }}
+          >
+            <Typography variant="p" component="p">
+              تَجْرِيد هو: فحص مُتناهي الدِّقَّة، تَنْقية من الشَّوائب
+            </Typography>
+            <br />
+            <Typography variant="p" component="p" sx={{ lineHeight: 1.7 }}>
+              تَجْرِيد يساعدك على كتابة نصوص خالية من الأخطاء الإملائية
+              والقواعدية، بالاستفادة من أحدث تقنيات الذكاء الاصطناعي للحفاظ على
+              الكتابة الصحيحة للغة العربية
+            </Typography>
+          </Typography>
+          {/* ---------------------------msg show max char is 255---------------- */}
+          {show && <Typography
+            variant="div"
+            component="p"
+            sx={{ background: "#DFC8BA",textAlign:'center' ,color: "#000",p: "10px " ,fontSize: "20px" , width:{xs:'300px', sm:'400px'},m:'10px auto'  }}
+          >
+            طول الجملة الواحدة لا يتجاوز 255 حرف
+          </Typography>}
+          {/* ---------------------------msg show max char is 255---------------- */}
+        </Container>
         <Stack
           sx={{
             width: "100%",
@@ -59,18 +86,41 @@ const Home = () => {
             flexDirection: { xs: "column", md: "row" },
           }}
         >
-          <Box className=" write" sx={{ width: "98%", height: "100%" }}>
+          <Box
+            className=" write"
+            sx={{ width: "98%", height: "100%", position: "relative" }}
+          >
             <textarea
               className="textArea"
               name="textType"
               rows="10"
               placeholder="اكتب النص هنا"
               value={text}
+              maxLength={255}
               style={{ width: "90%", marginRight: "20px" }}
               onChange={(e) => {
                 setText(e.target.value);
+                if (text.length === 254) {
+                  setShow(true)
+                }else {
+                  setShow(false)
+                  console.log('by')
+                }
               }}
             ></textarea>
+            <Typography
+              variant="span"
+              component="span"
+              sx={{
+                color: "#E45E3A",
+                position: "absolute",
+                bottom: "40px",
+                left: "40px",
+                fontWeight: "bold",
+              }}
+            >
+              حرف {text.length}
+            </Typography>
           </Box>
           <Box
             className="show_Correct"
