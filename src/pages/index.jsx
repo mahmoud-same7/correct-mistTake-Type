@@ -17,6 +17,7 @@ const Home = () => {
   const [correctData, setCorrectData] = useState("");
   const [show , setShow] = useState(false)
 
+  // ------------------start correct function
   const correctFunc = async () => {
     setLoading(true);
     try {
@@ -27,7 +28,6 @@ const Home = () => {
         method: "POST",
         body: formData,
       });
-
       const correctdata = await res.json();
       setCorrectData(correctdata);
       setLoading(false);
@@ -36,9 +36,10 @@ const Home = () => {
       throw error;
     }
   };
+  // ------------------end correct function
   return (
     <Box className="home">
-      <LayOut />
+      {/* <LayOut /> */}
       <Container maxWidth="lg">
         <Box
           className="img"
@@ -51,6 +52,7 @@ const Home = () => {
         >
           <img src={require("../assets/Capture.PNG")} width="100%" alt="logo" />
         </Box>
+        {/* ----------------------what's The Tajrid------------------------- */}
         <Container maxWidth="lg">
           <Typography
             variant="div"
@@ -68,6 +70,7 @@ const Home = () => {
             </Typography>
           </Typography>
           {/* ---------------------------msg show max char is 255---------------- */}
+          
           {show && <Typography
             variant="div"
             component="p"
@@ -77,6 +80,8 @@ const Home = () => {
           </Typography>}
           {/* ---------------------------msg show max char is 255---------------- */}
         </Container>
+        {/* ----------------------what's The Tajrid------------------------- */}
+
         <Stack
           sx={{
             width: "100%",
@@ -86,6 +91,7 @@ const Home = () => {
             flexDirection: { xs: "column", md: "row" },
           }}
         >
+          {/* ---------------------write The Your Text---------------------- */}
           <Box
             className=" write"
             sx={{ width: "98%", height: "100%", position: "relative",padding:'20px' }}
@@ -122,6 +128,8 @@ const Home = () => {
               حرف {text.length}
             </Typography>
           </Box>
+          {/* ---------------------write The Your Text---------------------- */}
+          {/* ---------------------Show The correct Text---------------------- */}
           <Box
             className="show_Correct"
             sx={{ width: "98%", mr: "10px", p: "20px" }}
@@ -152,7 +160,9 @@ const Home = () => {
               </Box>
             )}
           </Box>
+          {/* ---------------------Show The correct Text---------------------- */}
         </Stack>
+        
         <Box
           sx={{
             display: "flex",

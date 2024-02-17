@@ -4,7 +4,7 @@ import img from "../assets/undraw_Warning_re_eoyh.png";
 
 const Error = () => {
   let error = useRouteError();
-  console.error(error);
+  
   return (
     <Box
       sx={{

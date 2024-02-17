@@ -8,10 +8,10 @@ body {
   direction: rtl;
 }
 
-.home .layOut {
+/* .home .layOut {
   background: #fff;
   z-index: 1000;
-}
+} */
 
 .textArea {
   border: 0;
@@ -37,8 +37,8 @@ body {
   color: #fff !important;
 }
 
-.reset_btn {
+/* .reset_btn {
   color: #E45E3A !important;
   background-color: #fff;
   border: 1px solid #E45E3A !important;
-}
+} */
